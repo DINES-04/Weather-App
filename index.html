@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="weatherApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js"></script>
+    <link rel="icon" href="./image/logo.png">
+</head>
+
+<body>
+
+    <div class="container" ng-controller="WeatherController">
+        <h1>Weather App</h1>
+
+        <div class="search-box">
+            <input type="text" ng-model="cityName" placeholder="Enter city name..."
+                ng-keyup="$event.keyCode === 13 && getWeather()">
+            <button ng-click="getWeather()">Search</button>
+        </div>
+        <div class="loading" ng-show="loading">Loading weather data...</div>
+
+        <div class="error-message" ng-show="errorMessage">{{ errorMessage }}</div>
+
+        <div class="weather-container" ng-show="weatherData && !loading && !errorMessage">
+            <div class="weather-info">
+                <div class="city-name">{{ weatherData.location.name }}, {{ weatherData.location.country }}</div>
+                <img class="weather-icon" ng-src="https:{{ weatherData.current.condition.icon }}" alt="Weather icon">
+                <div class="temperature">{{ weatherData.current.temp_c }}°C</div>
+                <div class="weather-condition">{{ weatherData.current.condition.text }}</div>
+
+                <div class="weather-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Feels Like</span>
+                        <span class="detail-value">{{ weatherData.current.feelslike_c }}°C</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Humidity</span>
+                        <span class="detail-value">{{ weatherData.current.humidity }}%</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Wind Speed</span>
+                        <span class="detail-value">{{ weatherData.current.wind_kph }} km/h</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <img src="./image/bg.png" alt="background" class="background-image">
+    </div>
+</body>
+
+</html>
