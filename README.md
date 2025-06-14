@@ -19,7 +19,7 @@ A simple and responsive weather forecast application built using AngularJS and [
 3. Page With Error
 ![image](https://github.com/user-attachments/assets/cae9b691-080b-411b-a987-08701d7109d3)
 
-## 📁 Project Structure
+## Project Structure
 weather-app/
 
 ├── index.html # Main HTML page
